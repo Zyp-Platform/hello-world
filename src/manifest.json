@@ -1,0 +1,66 @@
+{
+  "id": "hello-world",
+  "name": "Hello World",
+  "version": "1.0.0",
+  "description": "Minimal SPA for Shell-V1 prototype validation",
+  "federation": {
+    "remoteEntry": "https://hello-world.zyp.app/remoteEntry.js",
+    "moduleName": "hello_world"
+  },
+  "entryPoints": {
+    "publicHome": "./PublicHome",
+    "memberHome": "./MemberHome",
+    "commissionerHome": "./CommissionerHome"
+  },
+  "routes": [
+    {
+      "path": "/core/hello-world/public",
+      "entryPoint": "publicHome",
+      "role": "public"
+    },
+    {
+      "path": "/core/hello-world/member",
+      "entryPoint": "memberHome",
+      "role": "member"
+    },
+    {
+      "path": "/core/hello-world/commissioner",
+      "entryPoint": "commissionerHome",
+      "role": "commissioner"
+    }
+  ],
+  "props": {
+    "communityId": {
+      "type": "string",
+      "required": true,
+      "description": "Current community/tenant ID"
+    },
+    "user": {
+      "type": "DashboardUser | null",
+      "required": true,
+      "description": "Authenticated user or null for public pages"
+    },
+    "onNavigate": {
+      "type": "(path: string) => void",
+      "required": true,
+      "description": "Shell navigation callback"
+    },
+    "theme": {
+      "type": "'light' | 'dark'",
+      "required": true,
+      "description": "Current theme mode"
+    }
+  },
+  "propsSchema": {
+    "DashboardUser": {
+      "id": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "displayName": "string",
+      "email": "string | undefined",
+      "avatarUrl": "string | undefined",
+      "role": "{ name: string }"
+    }
+  },
+  "sharedDeps": ["react", "react-dom"]
+}
