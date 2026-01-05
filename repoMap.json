@@ -1,0 +1,140 @@
+{
+  "repo": {
+    "id": "hello-world",
+    "name": "Hello World",
+    "ref": "cc1c8c8",
+    "version": "repomap-1.0",
+    "generatedAt": "2026-01-05T19:57:07.111Z"
+  },
+  "stack": {
+    "language": "ts",
+    "frontend": {
+      "framework": "react",
+      "bundler": "vite"
+    }
+  },
+  "paths": {
+    "root": ".",
+    "src": "src",
+    "frontend": {
+      "entry": "src/dashboards"
+    },
+    "configFiles": [
+      "vite.config.ts",
+      "tsconfig.json"
+    ]
+  },
+  "scripts": {
+    "dev": "pnpm dev",
+    "build": "pnpm build",
+    "test": "pnpm test",
+    "lint": "pnpm lint",
+    "typecheck": "pnpm type-check"
+  },
+  "entryPoints": {
+    "publicHome": {
+      "module": "src/dashboards/PublicHome.tsx",
+      "export": "PublicHomeApp",
+      "kind": "frontend"
+    },
+    "memberHome": {
+      "module": "src/dashboards/MemberHome.tsx",
+      "export": "MemberHomeApp",
+      "kind": "frontend"
+    },
+    "commissionerHome": {
+      "module": "src/dashboards/CommissionerHome.tsx",
+      "export": "CommissionerHomeApp",
+      "kind": "frontend"
+    }
+  },
+  "routes": [
+    {
+      "path": "/core/hello-world/public",
+      "entryPoint": "publicHome",
+      "role": "public"
+    },
+    {
+      "path": "/core/hello-world/member",
+      "entryPoint": "memberHome",
+      "role": "member"
+    },
+    {
+      "path": "/core/hello-world/commissioner",
+      "entryPoint": "commissionerHome",
+      "role": "commissioner"
+    }
+  ],
+  "contracts": {
+    "props": {
+      "communityId": {
+        "type": "string",
+        "required": true,
+        "description": "Current community/tenant ID"
+      },
+      "user": {
+        "type": "DashboardUser | null",
+        "required": true,
+        "description": "Authenticated user or null for public pages"
+      },
+      "onNavigate": {
+        "type": "(path: string) => void",
+        "required": true,
+        "description": "Shell navigation callback"
+      },
+      "theme": {
+        "type": "'light' | 'dark'",
+        "required": true,
+        "description": "Theme mode"
+      }
+    },
+    "types": {
+      "DashboardUser": {
+        "id": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "displayName": "string",
+        "email": "string | undefined",
+        "avatarUrl": "string | undefined",
+        "role": "{ name: string }"
+      }
+    },
+    "api": {
+      "basePath": "/api"
+    }
+  },
+  "deps": {
+    "shared": [
+      {
+        "name": "react",
+        "range": "19.2.0",
+        "kind": "peer"
+      },
+      {
+        "name": "react-dom",
+        "range": "19.2.0",
+        "kind": "peer"
+      }
+    ]
+  },
+  "constraints": {
+    "navigation": "All in-app navigation must call onNavigate(path); no direct window.location changes.",
+    "authz": "Routes must be role-gated; do not expose member/commissioner routes to public."
+  },
+  "scopes": {
+    "routing": [
+      "entryPoints",
+      "routes",
+      "contracts.props",
+      "constraints.navigation",
+      "constraints.authz"
+    ],
+    "build": [
+      "scripts",
+      "deps",
+      "packageManager",
+      "paths.configFiles"
+    ]
+  },
+  "packageManager": "npm"
+}
