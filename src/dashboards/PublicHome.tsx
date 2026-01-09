@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { DashboardProps } from '../types/props';
+import Calculator from '../pages/Calculator';
 
 /**
  * PublicHome Dashboard
@@ -9,6 +10,7 @@ import type { DashboardProps } from '../types/props';
  */
 export default function PublicHome(props: DashboardProps) {
   const { communityId, onNavigate, theme } = props;
+  const [showCalculator, setShowCalculator] = useState(false);
 
   // Expose props globally for testing
   useEffect(() => {
@@ -18,6 +20,36 @@ export default function PublicHome(props: DashboardProps) {
   const handleSignIn = () => {
     onNavigate('/core/user-core/public/auth/login');
   };
+
+  if (showCalculator) {
+    return (
+      <div>
+        <Calculator {...props} />
+        <div
+          style={{
+            padding: '1rem',
+            textAlign: 'center',
+            backgroundColor: theme === 'dark' ? '#1a1a1a' : '#ffffff',
+          }}
+        >
+          <button
+            onClick={() => setShowCalculator(false)}
+            style={{
+              padding: '0.75rem 1.5rem',
+              fontSize: '1rem',
+              backgroundColor: '#6B7280',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '0.5rem',
+              cursor: 'pointer',
+            }}
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -38,20 +70,39 @@ export default function PublicHome(props: DashboardProps) {
       <p style={{ marginBottom: '2rem', color: theme === 'dark' ? '#a0a0a0' : '#666' }}>
         A minimal SPA for Shell-V1 prototype validation.
       </p>
-      <button
-        onClick={handleSignIn}
-        style={{
-          padding: '0.75rem 1.5rem',
-          fontSize: '1rem',
-          backgroundColor: '#3B82F6',
-          color: '#ffffff',
-          border: 'none',
-          borderRadius: '0.5rem',
-          cursor: 'pointer',
-        }}
-      >
-        Sign In
-      </button>
+
+      <div style={{ marginBottom: '2rem' }}>
+        <button
+          onClick={handleSignIn}
+          style={{
+            padding: '0.75rem 1.5rem',
+            fontSize: '1rem',
+            backgroundColor: '#3B82F6',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+            marginRight: '1rem',
+          }}
+        >
+          Sign In
+        </button>
+        <button
+          onClick={() => setShowCalculator(true)}
+          style={{
+            padding: '0.75rem 1.5rem',
+            fontSize: '1rem',
+            backgroundColor: '#10B981',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+          }}
+        >
+          Open Calculator
+        </button>
+      </div>
+
       <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: theme === 'dark' ? '#666' : '#999' }}>
         Community: {communityId}
       </p>
