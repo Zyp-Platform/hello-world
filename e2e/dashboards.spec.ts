@@ -11,7 +11,7 @@ test.describe('Hello World Dashboards', () => {
     test('should render welcome message', async ({ page }) => {
       await page.goto('/');
       await expect(page.getByTestId('dashboard-container')).toBeVisible();
-      await expect(page.getByRole('heading')).toContainText('gregs world!');
+      await expect(page.getByRole('heading')).toContainText('Welcome to Zyp Platform');
     });
 
     test('should display sign-in button', async ({ page }) => {
