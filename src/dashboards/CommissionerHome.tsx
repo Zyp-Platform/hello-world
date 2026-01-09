@@ -60,7 +60,7 @@ export default function CommissionerHome(props: DashboardProps) {
       }}
     >
       <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-        Agent Playground
+        Go get it!
       </h1>
       <p style={{ marginBottom: '1rem', color: theme === 'dark' ? '#a0a0a0' : '#666' }}>
         Welcome, Commissioner {user.displayName || user.firstName}

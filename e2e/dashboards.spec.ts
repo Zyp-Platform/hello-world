@@ -61,7 +61,7 @@ test.describe('Hello World Dashboards', () => {
   test.describe('CommissionerHome', () => {
     test('should render admin dashboard', async ({ page }) => {
       await page.goto('/commissioner');
-      await expect(page.getByRole('heading')).toContainText('Admin');
+      await expect(page.getByRole('heading')).toContainText('Go get it!');
     });
 
     test('should display commissioner role', async ({ page }) => {
