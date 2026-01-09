@@ -435,16 +435,96 @@ function Calculator(props) {
     }
   );
 }
+function Test(props) {
+  const { communityId, onNavigate, theme } = props;
+  const handleBackHome = () => {
+    onNavigate("/core/hello-world/public");
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      "data-testid": "test-page-container",
+      "data-community-id": communityId,
+      "data-theme": theme,
+      style: {
+        padding: "2rem",
+        fontFamily: "system-ui, sans-serif",
+        backgroundColor: theme === "dark" ? "#1a1a1a" : "#ffffff",
+        color: theme === "dark" ? "#ffffff" : "#1a1a1a",
+        minHeight: "100vh"
+      },
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Test Page" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginBottom: "2rem", color: theme === "dark" ? "#a0a0a0" : "#666" }, children: "This is a test page to demonstrate navigation between pages." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { marginBottom: "2rem" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: handleBackHome,
+            style: {
+              padding: "0.75rem 1.5rem",
+              fontSize: "1rem",
+              backgroundColor: "#3B82F6",
+              color: "#ffffff",
+              border: "none",
+              borderRadius: "0.5rem",
+              cursor: "pointer"
+            },
+            children: "Back to Home"
+          }
+        ) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { style: { marginTop: "1rem", fontSize: "0.875rem", color: theme === "dark" ? "#666" : "#999" }, children: [
+          "Community: ",
+          communityId
+        ] })
+      ]
+    }
+  );
+}
 const { useEffect, useState } = await importShared("react");
 function PublicHome(props) {
   const { communityId, onNavigate, theme } = props;
   const [showCalculator, setShowCalculator] = useState(false);
+  const [showTest, setShowTest] = useState(false);
   useEffect(() => {
     window.__HELLO_WORLD_PROPS__ = props;
   }, [props]);
   const handleSignIn = () => {
     onNavigate("/core/user-core/public/auth/login");
   };
+  const handleNavigateToTest = () => {
+    setShowTest(true);
+  };
+  if (showTest) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Test, { ...props }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          style: {
+            padding: "1rem",
+            textAlign: "center",
+            backgroundColor: theme === "dark" ? "#1a1a1a" : "#ffffff"
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: () => setShowTest(false),
+              style: {
+                padding: "0.75rem 1.5rem",
+                fontSize: "1rem",
+                backgroundColor: "#6B7280",
+                color: "#ffffff",
+                border: "none",
+                borderRadius: "0.5rem",
+                cursor: "pointer"
+              },
+              children: "Back to Home"
+            }
+          )
+        }
+      )
+    ] });
+  }
   if (showCalculator) {
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Calculator, { ...props }),
@@ -490,8 +570,8 @@ function PublicHome(props) {
         minHeight: "100vh"
       },
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Welcome to the new zyp platform!" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginBottom: "2rem", color: theme === "dark" ? "#a0a0a0" : "#666" }, children: "A minimal SPA for Shell-V1 prototype validation." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Something New" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginBottom: "2rem", color: theme === "dark" ? "#a0a0a0" : "#666" }, children: "Welcome to the updated home page with a fresh new look." }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: "2rem" }, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
@@ -521,9 +601,26 @@ function PublicHome(props) {
                 color: "#ffffff",
                 border: "none",
                 borderRadius: "0.5rem",
-                cursor: "pointer"
+                cursor: "pointer",
+                marginRight: "1rem"
               },
               children: "Open Calculator"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: handleNavigateToTest,
+              style: {
+                padding: "0.75rem 1.5rem",
+                fontSize: "1rem",
+                backgroundColor: "#F59E0B",
+                color: "#ffffff",
+                border: "none",
+                borderRadius: "0.5rem",
+                cursor: "pointer"
+              },
+              children: "Go to Test Page"
             }
           )
         ] }),

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { DashboardProps } from '../types/props';
 import Calculator from '../pages/Calculator';
+import Test from '../pages/Test';
 
 /**
  * PublicHome Dashboard
@@ -11,6 +12,7 @@ import Calculator from '../pages/Calculator';
 export default function PublicHome(props: DashboardProps) {
   const { communityId, onNavigate, theme } = props;
   const [showCalculator, setShowCalculator] = useState(false);
+  const [showTest, setShowTest] = useState(false);
 
   // Expose props globally for testing
   useEffect(() => {
@@ -20,6 +22,40 @@ export default function PublicHome(props: DashboardProps) {
   const handleSignIn = () => {
     onNavigate('/core/user-core/public/auth/login');
   };
+
+  const handleNavigateToTest = () => {
+    setShowTest(true);
+  };
+
+  if (showTest) {
+    return (
+      <div>
+        <Test {...props} />
+        <div
+          style={{
+            padding: '1rem',
+            textAlign: 'center',
+            backgroundColor: theme === 'dark' ? '#1a1a1a' : '#ffffff',
+          }}
+        >
+          <button
+            onClick={() => setShowTest(false)}
+            style={{
+              padding: '0.75rem 1.5rem',
+              fontSize: '1rem',
+              backgroundColor: '#6B7280',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '0.5rem',
+              cursor: 'pointer',
+            }}
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (showCalculator) {
     return (
@@ -65,10 +101,10 @@ export default function PublicHome(props: DashboardProps) {
       }}
     >
       <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-        Welcome to the new zyp platform!
+        Something New
       </h1>
       <p style={{ marginBottom: '2rem', color: theme === 'dark' ? '#a0a0a0' : '#666' }}>
-        A minimal SPA for Shell-V1 prototype validation.
+        Welcome to the updated home page with a fresh new look.
       </p>
 
       <div style={{ marginBottom: '2rem' }}>
@@ -97,9 +133,24 @@ export default function PublicHome(props: DashboardProps) {
             border: 'none',
             borderRadius: '0.5rem',
             cursor: 'pointer',
+            marginRight: '1rem',
           }}
         >
           Open Calculator
+        </button>
+        <button
+          onClick={handleNavigateToTest}
+          style={{
+            padding: '0.75rem 1.5rem',
+            fontSize: '1rem',
+            backgroundColor: '#F59E0B',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+          }}
+        >
+          Go to Test Page
         </button>
       </div>
 
