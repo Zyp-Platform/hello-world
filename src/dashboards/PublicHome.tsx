@@ -33,7 +33,7 @@ export default function PublicHome(props: DashboardProps) {
       }}
     >
       <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-        Welcome to Zyp Platform
+        Welcome to the new zyp platform!
       </h1>
       <p style={{ marginBottom: '2rem', color: theme === 'dark' ? '#a0a0a0' : '#666' }}>
         A minimal SPA for Shell-V1 prototype validation.
