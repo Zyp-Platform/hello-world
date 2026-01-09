@@ -19,6 +19,10 @@ export default function CommissionerHome(props: DashboardProps) {
     onNavigate('/core/user-core/commissioner/users');
   };
 
+  const handleTest2 = () => {
+    onNavigate('/core/hello-world/test2');
+  };
+
   if (!user) {
     return (
       <div data-testid="dashboard-container" data-community-id={communityId}>
@@ -103,6 +107,23 @@ export default function CommissionerHome(props: DashboardProps) {
           <h3 style={{ margin: 0, fontSize: '1rem' }}>Manage Users</h3>
           <p style={{ margin: '0.5rem 0 0', fontSize: '0.875rem', opacity: 0.7 }}>
             View and manage community members
+          </p>
+        </button>
+
+        <button
+          onClick={handleTest2}
+          style={{
+            padding: '1rem',
+            backgroundColor: theme === 'dark' ? '#374151' : '#F3F4F6',
+            border: 'none',
+            borderRadius: '0.5rem',
+            cursor: 'pointer',
+            textAlign: 'left',
+          }}
+        >
+          <h3 style={{ margin: 0, fontSize: '1rem' }}>Test2 Page</h3>
+          <p style={{ margin: '0.5rem 0 0', fontSize: '0.875rem', opacity: 0.7 }}>
+            Navigate to the Test2 page
           </p>
         </button>
 

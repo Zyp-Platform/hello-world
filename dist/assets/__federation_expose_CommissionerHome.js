@@ -9,6 +9,9 @@ function CommissionerHome(props) {
   const handleManageUsers = () => {
     onNavigate("/core/user-core/commissioner/users");
   };
+  const handleTest2 = () => {
+    onNavigate("/core/hello-world/test2");
+  };
   if (!user) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { "data-testid": "dashboard-container", "data-community-id": communityId, children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Loading admin..." }) });
   }
@@ -90,6 +93,24 @@ function CommissionerHome(props) {
                   children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { style: { margin: 0, fontSize: "1rem" }, children: "Manage Users" }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: "0.5rem 0 0", fontSize: "0.875rem", opacity: 0.7 }, children: "View and manage community members" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "button",
+                {
+                  onClick: handleTest2,
+                  style: {
+                    padding: "1rem",
+                    backgroundColor: theme === "dark" ? "#374151" : "#F3F4F6",
+                    border: "none",
+                    borderRadius: "0.5rem",
+                    cursor: "pointer",
+                    textAlign: "left"
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { style: { margin: 0, fontSize: "1rem" }, children: "Test2 Page" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: "0.5rem 0 0", fontSize: "0.875rem", opacity: 0.7 }, children: "Navigate to the Test2 page" })
                   ]
                 }
               ),
