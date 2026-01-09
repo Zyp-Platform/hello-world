@@ -23,7 +23,7 @@ function PublicHome(props) {
         minHeight: "100vh"
       },
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Welcome to Hello World" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "gregs world!" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginBottom: "2rem", color: theme === "dark" ? "#a0a0a0" : "#666" }, children: "A minimal SPA for Shell-V1 prototype validation." }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",

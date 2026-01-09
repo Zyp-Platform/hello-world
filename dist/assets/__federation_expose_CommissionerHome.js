@@ -44,7 +44,7 @@ function CommissionerHome(props) {
         minHeight: "100vh"
       },
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Admin Dashboard" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { style: { fontSize: "2rem", marginBottom: "1rem" }, children: "Hi Greg!" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { style: { marginBottom: "1rem", color: theme === "dark" ? "#a0a0a0" : "#666" }, children: [
           "Welcome, Commissioner ",
           user.displayName || user.firstName
